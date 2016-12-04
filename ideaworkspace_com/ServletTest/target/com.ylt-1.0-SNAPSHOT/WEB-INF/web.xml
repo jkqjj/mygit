@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+
+    <!--<filter>-->
+        <!--<filter-name>simple</filter-name>-->
+        <!--<filter-class>Java_web.SimpleFilter</filter-class>-->
+        <!--<init-param>-->
+            <!--<param-name>ref</param-name>-->
+            <!--<param-value>HELLO</param-value>-->
+        <!--</init-param>-->
+    <!--</filter>-->
+    <!--<filter-mapping>-->
+        <!--<filter-name>simple</filter-name>-->
+        <!--<url-pattern>/*</url-pattern>-->
+    <!--</filter-mapping>-->
+    <!--<filter-mapping>-->
+        <!--<filter-name>simple</filter-name>-->
+        <!--<url-pattern>/jsp/*</url-pattern>-->
+    <!--</filter-mapping>-->
+    <!--<filter-mapping>-->
+        <!--<filter-name>simple</filter-name>-->
+        <!--<url-pattern>/jsp/admin/*</url-pattern>-->
+    <!--</filter-mapping>-->
+    <!--<filter-mapping>-->
+        <!--<filter-name>simple</filter-name>-->
+        <!--<url-pattern>/js/*</url-pattern>-->
+    <!--</filter-mapping>-->
+
+    <!--<filter>-->
+        <!--<filter-name>encoding</filter-name>-->
+        <!--<filter-class>Java_web.EncodingFilter</filter-class>-->
+        <!--<init-param>-->
+            <!--<param-name>charset</param-name>-->
+            <!--<param-value>UTF-8</param-value>-->
+        <!--</init-param>-->
+    <!--</filter>-->
+    <!--<filter-mapping>-->
+        <!--<filter-name>encoding</filter-name>-->
+        <!--<url-pattern>/*</url-pattern>-->
+    <!--</filter-mapping>-->
+
+    <filter>
+        <filter-name>login</filter-name>
+        <filter-class>Java_web.LoginFilter</filter-class>
+        <init-param>
+            <param-name>userid</param-name>
+            <param-value>jiajia</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>login</filter-name>
+        <url-pattern>/login</url-pattern>
+    </filter-mapping>
+    
+    <listener>
+        <listener-class>Java_web.ServletContextListenerDemo</listener-class>
+    </listener>
+
+    <listener>
+        <listener-class>Java_web.ServletContextAttributeListenerDemo</listener-class>
+    </listener>
+    
+    <listener>
+        <listener-class>Java_web.HttpSessionListenerDemo</listener-class>
+    </listener>
+
+    <listener>
+        <listener-class>Java_web.HttpSessionAttributeListenerDemo</listener-class>
+    </listener>
+    
+    <listener>
+        <listener-class>Java_web.ServletRequestListenerDemo</listener-class>
+    </listener>
+    
+    <listener>
+        <listener-class>Java_web.ServletRequestAttributeListenerDemo</listener-class>
+    </listener>
+
+    <listener>
+        <listener-class>Java_web.OnlineUserList</listener-class>
+    </listener>
+    <servlet>
+        <servlet-name>hello</servlet-name>
+        <servlet-class>Java_web.HelloServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>hello</servlet-name>
+        <url-pattern>/hello</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>input</servlet-name>
+        <servlet-class>Java_web.InputServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>input</servlet-name>
+        <url-pattern>/webapp/InputServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>life</servlet-name>
+        <servlet-class>Java_web.LifeCycleServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>life</servlet-name>
+        <url-pattern>/left</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>initparam</servlet-name>
+        <servlet-class>Java_web.InitParamServlet</servlet-class>
+        <init-param>
+            <param-name>ref</param-name>
+            <param-value>www.java.cn</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>initparam</servlet-name>
+        <url-pattern>/initParam</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>sessionDemo</servlet-name>
+        <servlet-class>Java_web.HttpSessionDemoServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>sessionDemo</servlet-name>
+        <url-pattern>/HttpSessionDemoServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>application</servlet-name>
+        <servlet-class>Java_web.ServletContextDemoServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>application</servlet-name>
+        <url-pattern>/ServletContextDemoServlet</url-pattern>
+    </servlet-mapping>
+
+
+<!--session和request的区别-->
+    <servlet>
+        <servlet-name>client</servlet-name>
+        <servlet-class>Java_web.ClientRedirectDemo</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>client</servlet-name>
+        <url-pattern>/ClientRedirectDemo</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>servlet</servlet-name>
+        <servlet-class>Java_web.ServletRedirectDemo</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>servlet</servlet-name>
+        <url-pattern>/ServletRedirectDemo</url-pattern>
+    </servlet-mapping>
+
+
+</web-app>

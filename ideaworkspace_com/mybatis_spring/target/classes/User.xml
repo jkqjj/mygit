@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--namespace的名字可以随便取
+       但是要保证是唯一的。-->
+<mapper namespace="com.yulintu.domain.User">
+    <!--<select id="selectBlog" parameterType="int" resultType="Blog">-->
+        <!--select * from Blog where id = #{id}-->
+    <!--</select>-->
+    <!--根据id来查询User-->
+    <!--id 指的是当前sql语句的唯一标识
+        parameterType指的是参数类型
+        resultType指的是结果的类型或者叫做返回值类型-->
+
+
+    <!--描述数据库字段和实体类中的属性的对应
+        column="id"指的是数据库中的字段
+        property="id"指的是实体类中的属性
+
+        <id column="id" property="id"/>
+        id标签指的的主键的标签
+        其他的普通属性都用result标签-->
+    <resultMap id="userMap" type="User">
+        <id column="id" property="id"/>
+        <result column="name" property="userName"/>
+        <result column="address" property="address"/>
+    </resultMap>
+
+    <sql id="mysql">
+        id,name,address
+    </sql>
+
+
+
+    <!--<select id="selectUserById" parameterType="string" resultType="User">-->
+           <!--SELECT id,NAME as userName,address from USER WHERE id = #{userid}-->
+    <!--</select>-->
+    <!--        SELECT * FROM USER WHERE id = #{id}-->
+
+    <!--<select id="selectUserById" parameterType="string" resultMap="userMap">-->
+        <!--SELECT id,NAME ,address from USER WHERE id = #{userid}-->
+    <!--</select>-->
+    <select id="selectUserById" parameterType="string" resultMap="userMap">
+        SELECT
+        <include refid="mysql"/>
+        from USER WHERE id = #{userid}
+    </select>
+
+    <!--查询所有User-->
+    <select id="selectAllUser" resultType="User">
+--         SELECT * FROM USER
+
+           SELECT id,NAME AS username,address FROM USER
+    </select>
+
+    <!--根据id查询User，返回值为：Map-->
+    <select id="selectUserByIdForMap" parameterType="string" resultType="hashmap">
+        SELECT id ,NAME ,address FROM  USER  WHERE id = #{userid}
+    </select>
+
+    <!--动态sql-->
+    <!--<if test="userName != null">指的是实体的属性
+        AND NAME 指的是数据库中的字段 -->
+    <select id="selectUserByCondition" parameterType="User" resultType="User">
+        SELECT id,NAME AS userName ,address FROM USER WHERE 1 = 1
+        <if test="id != null">
+            AND id = #{id}
+        </if>
+        <if test="userName != null">
+            AND NAME = #{userName}
+        </if>
+        <if test="address != null">
+            AND address = #{address}
+        </if>
+    </select>
+
+    <!--动态sql-->
+    <select id="selectUserByCondition2" parameterType="User" resultType="User">
+        SELECT id,NAME AS userName,address FROM USER
+        <where>
+            <if test="id != null">
+                id = #{id}
+            </if>
+            <if test="userName != null">
+                AND NAME  = #{userName}
+            </if>
+            <if test="address != null">
+                AND address = #{address}
+            </if>
+        </where>
+    </select>
+
+    <!--插入User-->
+    <insert id="insertUser" parameterType="User" >
+        INSERT INTO USER (id ,name ,address) VALUE (#{id}, #{userName},#{address})
+    </insert>
+
+    <!--插入User 参数为hashmap-->
+    <insert id="insertUserForMap" parameterType="hashmap">
+        INSERT INTO USER (id ,name,address) VALUE (#{id},#{name},#{address})
+    </insert>
+
+    <!--删除数据  根据id删除User-->
+    <delete id="deleteUserById" parameterType="string">
+        DELETE FROM USER WHERE id = #{id}
+    </delete>
+
+    <!--根据id来更新User-->
+    <!--  NAME数据库的字段名称       userName实体类中的属性-->
+    <update id="updateUserById" parameterType="User">
+        UPDATE USER SET NAME = #{userName},address = #{address}WHERE id = #{id}
+    </update>
+
+    <!--动态更新-->
+    <update id="updateUserByCondition" parameterType="User">
+        UPDATE USER
+        <set>
+            <if test="userName != null">
+                name = #{userName},
+            </if>
+            <if test="address != null">
+                address = #{address}
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <!--根据id来更新User,参数为map-->
+    <update id="updateUserByIdForMap" parameterType="hashmap">
+        UPDATE USER SET NAME = #{userName},address = #{address} WHERE id = #{id}
+    </update>
+
+</mapper>

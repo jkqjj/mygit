@@ -1,0 +1,21 @@
+1.MVC
+springMVC底层是基于servlet。
+                            |-->HandlerMapping--|
+                            |                   |
+                            |                    -->controller------------->|
+                            |                                               |
+     request-->DispatcherServlet-------------------------------------|      |
+                           |                                    -->ModelAndView ----->ViewResolver---->View---->客户端
+                           <-----------------------------------------|
+
+
+
+2.几种HandlerMapping介绍
+BeanNameUrlHandlerMapping(默认)
+SimpleUrlHandlerMapping
+ControllerClassNameHandlerMapping
+
+3.几种Controller介绍
+CommandController----命令控制器
+FormController-------表单控制器
+WizardFormControll---向导表单控制器

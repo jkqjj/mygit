@@ -1,0 +1,21 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <!--
+        把documentManager、worddocument、exceldocument、pdfdocument
+    -->
+
+    <bean id="documentManager" class="com.yulintu.document.DocumentManager">
+        <!--
+            document是一个接口-->
+        <property name="document">
+            <!--通过ref给接口赋值-->
+            <ref bean="wordDocument"/>
+        </property>
+    </bean>
+    <bean id="wordDocument" class="com.yulintu.document.WordDocument"></bean>
+    <bean id="excelDocument" class="com.yulintu.document.ExcelDocument"></bean>
+    <bean id="pdfDocument" class="com.yulintu.document.PDFDocument"></bean>
+    </beans>

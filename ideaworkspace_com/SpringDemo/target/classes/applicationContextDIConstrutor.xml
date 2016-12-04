@@ -1,0 +1,26 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean id="person" class="com.yulintu.yulintu_di.construtor.Person">
+        <!--
+            构造函数的参数
+                index    第几个参数，下表从0开始
+                type     参数类型
+                ref      如果类型是引用类型，赋值
+                value    如果类型是基本类型，赋值
+
+                说明：
+                    只能指定一个构造函数
+                -->
+
+        <!--<constructor-arg index="0" type="java.lang.Long" value="4"></constructor-arg>-->
+        <!--<constructor-arg index="1" type="java.lang.String" value="enen"></constructor-arg>-->
+        <constructor-arg index="0" type="java.lang.String" value="enen1"></constructor-arg>
+        <constructor-arg index="1" ref="student"></constructor-arg>
+
+    </bean>
+
+    <bean id="student" class="com.yulintu.yulintu_di.construtor.Student"></bean>
+    </beans>

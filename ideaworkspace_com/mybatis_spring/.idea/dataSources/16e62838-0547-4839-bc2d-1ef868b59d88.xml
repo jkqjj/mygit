@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="MySQL - mybatis@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="2.6">
+    <schema id="1" name="mybatis">
+      <visible>1</visible>
+    </schema>
+    <schema id="2" name="information_schema"/>
+    <schema id="3" name="mydb"/>
+    <schema id="4" name="mysql"/>
+    <schema id="5" name="test"/>
+    <table id="6" parent="1" name="orders"/>
+    <table id="7" parent="1" name="person"/>
+    <table id="8" parent="1" name="user"/>
+    <column id="9" parent="6" name="orderId">
+      <data-type>varchar(36)|0</data-type>
+    </column>
+    <column id="10" parent="6" name="orderNumber">
+      <data-type>varchar(20)|0</data-type>
+    </column>
+    <column id="11" parent="6" name="orderPrice">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="12" parent="6" name="pid">
+      <data-type>varchar(36)|0</data-type>
+    </column>
+    <column id="13" parent="7" name="personId">
+      <mandatory>1</mandatory>
+      <data-type>varchar(36)|0</data-type>
+    </column>
+    <column id="14" parent="7" name="personName">
+      <data-type>varchar(64)|0</data-type>
+    </column>
+    <column id="15" parent="7" name="personAddress">
+      <data-type>varchar(128)|0</data-type>
+    </column>
+    <column id="16" parent="7" name="personTel">
+      <data-type>varchar(11)|0</data-type>
+    </column>
+    <key id="17" parent="7" name="PRIMARY">
+      <columns>personId</columns>
+      <primary>1</primary>
+    </key>
+    <column id="18" parent="8" name="id">
+      <mandatory>1</mandatory>
+      <data-type>varchar(36)|0</data-type>
+    </column>
+    <column id="19" parent="8" name="name">
+      <data-type>varchar(64)|0</data-type>
+    </column>
+    <column id="20" parent="8" name="address">
+      <data-type>varchar(128)|0</data-type>
+    </column>
+    <key id="21" parent="8" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+  </database-model>
+</dataSource>

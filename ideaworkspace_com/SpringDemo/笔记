@@ -1,0 +1,51 @@
+spring的IOC：
+ IOC：spring容器控制对象的生命周期----前提条件：在spring容器中的bean必须是单例的
+        *创建
+            *方式
+                *利用默认的构造函数，如果没有默认的构造函数，会报错
+                *利用静态工厂方法
+                *利用实例工厂方法
+            *创建的时机
+                *lazy-init为“default/false”当启动spring容器的时候创建bean，
+                但是如果该bean是prototype时，特殊，这种情况无效。
+                    *在spring容器启动的时，就会发现错误。
+                    *有可能会造成一些数据长时间驻留在内存中。
+                *lazy-init为“true”当context.getBean时创建。
+                bean为多例时，必须用这种方案创建对象。
+                    *不能及时发现错误，
+                    *数据会在需要的时候进行加载。
+        *初始化
+            *有spring容器调用init方法
+            *在构造函数之后执行
+        *销毁
+            *如果是单利，则必须返回ClassPathXmlApplicationContext，该容器才能执行销毁工作
+            *如果是多例，容器不负责销毁。
+
+springDI(依赖注入)：给属性赋值就是依赖注入。
+public class Person{
+    private Long pid;//代表基本类型的包装类
+    private String pname;//String类型
+    private Student student;//引用类型
+    private List lists;//集合
+    private Set sets;//集合
+    private Map map;
+    private Properties properties;
+    //set和get方法
+}
+
+
+ioc和di做了什么事情呢？
+    *创建对象
+    *给属性赋值
+ioc和di的意义：
+    可以在一个类中引入一个接口，而给接口赋值的工作交给spring容器来做，
+    程序员只需要在配置文件做一些配置就可以了，这样在客户端做到了完全的面向接口编程。
+
+
+什么叫做注解：
+    *注解就是必须依赖于类中的某一个部分
+    *注解应该在类的哪些部位出现
+    *自定义注解
+    *了解jdk内置的注解
+    *解析注解
+

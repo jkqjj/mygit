@@ -1,0 +1,9 @@
+1.Servlet是使用java实现的CGI程序,但是与传统CGI不同的是,Servlet采用多线程的方式进行处理,所以程序的性能更高;
+2.要想实现一个Servlet则一点光要继承HttpServlet类,并根据需要覆写相应的方法;
+3.Servlet生命周期控制的3个方法,即:init(),sevice()(doGet(),doPost())和destroy();
+4.Servlet程序中可以通过HttpServletRequest接口的getSession方法取得一个HttpSession对象;
+5.在Servlet程序中可以通过getServletContext()方法取得ServletContext对象;
+6.在Servlet中实现服务器端跳转使用RequestDispatcher接口完成;
+7.MVC设计模式是javaEE的核心设计模式,使用MVC可以使的代码的层次更加清晰,程序维护更加方便;
+8.要实现一个过滤器,则一点光要实现Filter接口,并且覆写此接口中的相应方法,所有的过滤器要执行两次,过滤器同样需要在web.xml文件中配置，但是配置的路径表示的是过滤路径；
+9.监听器可以完成对web操作的监听，主要监听application，session，request的操作。

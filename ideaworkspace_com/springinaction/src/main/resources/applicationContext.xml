@@ -1,0 +1,47 @@
+<!--<?xml version="1.0" encoding="UTF-8">-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean id = "compactDisc" class="com.yulintu.soundsystem.BlankDisc">
+        <constructor-arg value="Sgt. Pepper's Lonely Hearts Club Band"/>
+        <constructor-arg value="The Beatles"/>
+        <constructor-arg>
+            <list>
+                <value>Sgt. Pepper's Lonely Hearts Club Band</value>
+                <value>With a Little Help from My Friends</value>
+                <value>Lucy in the Sky with Diamonds</value>
+                <value>Getting Better</value>
+                <value>Fixing a Hole</value>
+            </list>
+        </constructor-arg>
+
+        <!--<constructor-arg>-->
+            <!--<list>-->
+                <!--<ref bean="sgtPeppers"/>-->
+                <!--<ref bean="whiteAlbum"/>-->
+                <!--<ref bean="hardDaysNight"/>-->
+                <!--<ref bean="revolver"/>-->
+            <!--</list>-->
+        <!--</constructor-arg>-->
+
+        <constructor-arg>
+            <set>
+                <value>Sgt. Pepper's Lonely Hearts Club Band</value>
+                <value>With a Little Help from My Friends</value>
+                <value>Lucy in the Sky with Diamonds</value>
+                <value>Getting Better</value>
+                <value>Fixing a Hole</value>
+            </set>
+        </constructor-arg>
+
+        <!--
+            <set>和<list>元素区别不大，其中最重要的不同在于当spring创建要装配的集合的时候，
+            所创建的是java.util.Set还是java.util.List。
+            如果是Set的话，所有重复的值都会被忽略掉，存放顺序也不会得以保证。
+            不过无论是哪种情况下，
+            <set>或<list>都可以用来装配List、Set甚至数组。-->
+
+    </bean>
+</beans>

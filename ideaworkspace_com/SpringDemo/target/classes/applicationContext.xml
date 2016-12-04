@@ -1,0 +1,84 @@
+<!--<?xml version="1.0" encoding="UTF-8">-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <!--beans
+    就是把一个类放在Spring容器中，该类就叫做bean
+    一个bean就代表一个类
+    id就是一个标识符，命名规范：类名的第一个字母小写-->
+
+    <!--在默认情况下，Spring创建bean是单例模式
+        单例模式应该注意安全性问题
+        属于单例模式的属性是共享的
+        如果该属性有数据，会引发线程安全问题
+        一般情况下，把数据中存放在方法的变量中-->
+
+    <!--scope
+            singleton
+                单例模式
+                spring容器负责创建，初始化，销毁。
+            property
+                多例模式
+                不管
+                当一个bean是多例模式的情况下
+               lazy-init="false"或者lazy-init="default"无效
+               spring容器只负责创建和初始化
+               -->
+
+    <!--init-method
+            该方法是由spring容器执行
+            在构造函数之后执行
+            如果在构造函数之后，在调用方法之前要做一些工作，可以在init方法中完成
+
+        destroy-method
+            如果该bean是单例模式，则在spring容器关闭或者销毁的时候执行该方法
+            如果该bean是多例模式，则spring容器不负责销毁
+        说明：要想让spring容器控制bean的生命周期，那么该bean必须是单例模式
+             如果该bean是多例模式，则该bean中还有资源，关闭资源的操作由程序员完成
+            -->
+
+
+
+    <!--<bean id="helloWorld" class="HelloWorld" scope="prototype" lazy-init="false" init-method="init" destroy-method="destroy">-->
+        <!--<property name="name" value="javaweb" />-->
+    <!--</bean>-->
+
+    <!--
+        在这个配置中，spring容器要用默认的构造函数为HelloWorld创建对象-->
+    <!--
+        采用静态工厂方法创建对象
+            factory-method为工厂方法
+
+            一共创建了两个对象-->
+    <!--<bean id="helloWorld1" class="HelloWorld"></bean>-->
+    <!--<bean id="helloWorld2" class="HelloWorldFactory" factory-method="getInstance"></bean>-->
+
+    <!--
+        在启动spring容器的时候，spring容器配置文件中的类就已经创建完成对象了
+        一共创建了两个对象-->
+
+    <!--
+        lazy-init决定
+            default 默认为false
+            true   在context.getbean()的时候才要创建对象
+                   优点：如果该bean有大数据存在，则什么时候context.getbean()什么时候创建对象，可以防止数据过早的停留在内存中，做到了懒加载
+                   缺点：如果spring配置文件中，该bean的配置有错误，那么tomcat容器启动的时候，发现不了该错误
+            false  在启动spring容器的时候创建对象
+                   优点：如果在启动tomcat时要启动spring容器，那么如果spring容器会错误，这个时候tomcat容器不会正常启动
+                   缺点：如果存在大量的数据，会过早的停留在内存中。
+
+            -->
+    <!--<bean id="helloWorld" class="HelloWorld" lazy-init="true"></bean>-->
+    <!--<bean id="person" class="Person" lazy-init="true"></bean>-->
+
+<!--在这个配置中spring容器要用默认的构造函数为HelloWorld创建对象-->
+    <!--<bean id="helloWorld" class="com.yulintu.ioc.createobject.HelloWorld"></bean>-->
+
+
+    <!--采用静态方法创建对象
+        factory-method为工厂方法-->
+    <!--<bean id="helloWorld2" class="com.yulintu.ioc.createobject.HelloWorldFactory" factory-method="getInstance"></bean>-->
+
+</beans>

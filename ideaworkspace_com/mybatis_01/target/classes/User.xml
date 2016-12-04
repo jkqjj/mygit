@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--namespace的名字可以随便取
+       但是要保证是唯一的。-->
+<mapper namespace="com.yulintu.domain.User">
+    <!--<select id="selectBlog" parameterType="int" resultType="Blog">-->
+        <!--select * from Blog where id = #{id}-->
+    <!--</select>-->
+    <!--根据id来查询User-->
+    <!--id 指的是当前sql语句的唯一标识
+        parameterType指的是参数类型
+        resultType指的是结果的类型或者叫做返回值类型-->
+
+    <select id="selectUserById" parameterType="string" resultType="com.yulintu.domain.User">
+        SELECT * FROM USER WHERE id = #{id}
+    </select>
+
+    <!--查询所有User-->
+    <select id="selectAllUser" resultType="com.yulintu.domain.User">
+--         SELECT * FROM USER
+
+           SELECT id,NAME AS username,address FROM USER
+    </select>
+
+    <!--插入User-->
+    <insert id="insertUser" parameterType="com.yulintu.domain.User" >
+        INSERT INTO USER (id ,name ,address) VALUE (#{id}, #{userName},#{address})
+    </insert>
+</mapper>
