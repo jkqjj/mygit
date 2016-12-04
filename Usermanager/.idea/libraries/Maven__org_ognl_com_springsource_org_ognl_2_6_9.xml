@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.ognl:com.springsource.org.ognl:2.6.9">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/ognl/com.springsource.org.ognl/2.6.9/com.springsource.org.ognl-2.6.9.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/ognl/com.springsource.org.ognl/2.6.9/com.springsource.org.ognl-2.6.9-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/ognl/com.springsource.org.ognl/2.6.9/com.springsource.org.ognl-2.6.9-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
